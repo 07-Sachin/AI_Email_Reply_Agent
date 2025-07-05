@@ -656,8 +656,9 @@ def index():
                         result = "Error: Scheduled time must be in the future"
                     else:
                         # Generate AI content
-                        content = generate_reply( reference)
                         content = email_body
+                    if reference.strip():
+                        content += f"\n\n--- Additional Context ---\n{reference}"
                         
                         # Create unique ID for scheduled email
                         email_id = str(uuid.uuid4())
